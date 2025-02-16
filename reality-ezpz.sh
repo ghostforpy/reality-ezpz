@@ -1515,7 +1515,7 @@ function upgrade {
   fi
   rm -f "${config_path}/xray.conf"
   rm -f "${config_path}/singbox.conf"
-  if ! ${docker_cmd} ls | grep ${compose_project} >/dev/null && [[ -r ${path[compose]} ]]; then
+  if ! ${docker_cmd} ps | grep ${compose_project} >/dev/null && [[ -r ${path[compose]} ]]; then
     ${docker_cmd} --project-directory ${config_path} down --remove-orphans --timeout 2
   fi
   if [[ -r ${path[config]} ]]; then
