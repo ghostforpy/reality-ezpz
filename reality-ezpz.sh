@@ -2323,7 +2323,7 @@ function restart_tgbot_compose {
 }
 
 function restart_container {
-  if [[ -z "$(${docker_cmd} ls | grep "${path[compose]}" | grep running || true)" ]]; then
+  if [[ -z "$(${docker_cmd} ps | grep "${path[compose]}" | grep running || true)" ]]; then
     restart_docker_compose
     return
   fi
