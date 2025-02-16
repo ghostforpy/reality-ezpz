@@ -2626,10 +2626,10 @@ if [[ ${args[restart]} == 'true' ]]; then
     restart_tgbot_compose
   fi
 fi
-if [[ -z "$(${docker_cmd} ls | grep "${path[compose]}" | grep running || true)" ]]; then
+if [[ -z "$(${docker_cmd} ps | grep "${path[compose]}" | grep running || true)" ]]; then
   restart_docker_compose
 fi
-if [[ -z "$(${docker_cmd} ls | grep "${path[tgbot_compose]}" | grep running || true)" && ${config[tgbot]} == 'ON' ]]; then
+if [[ -z "$(${docker_cmd} ps | grep "${path[tgbot_compose]}" | grep running || true)" && ${config[tgbot]} == 'ON' ]]; then
   restart_tgbot_compose
 fi
 if [[ ${args[server-config]} == true ]]; then
